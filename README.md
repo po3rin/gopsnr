@@ -1,6 +1,6 @@
 # gopsnr
 
-this package calucurate MSE/PSNR.
+this package calucurate MSE/PSNR. ```"gocv.io/x/gocv"``` package is required.
 
 ## MSE/PSNR
 
@@ -10,6 +10,8 @@ PSNR is most easily defined via the mean squared error (MSE). Given a noise-free
 <img src="./static/fc22801ed1232ff1231c4156b589de5c32063a8a.svg"></img>
 
 ## Quick Start
+
+this repository prepares Dockerfile for running OpenCV with Go
 
 ```bash
 make run CMD="go run cmd/gopsnr/main.go img1.jpeg img2.jpeg"
