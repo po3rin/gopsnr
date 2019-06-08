@@ -6,7 +6,7 @@ this package calucurate MSE/PSNR.
 
 PSNR is most easily defined via the mean squared error (MSE). Given a noise-free m×n monochrome image I and its noisy approximation K, MSE is defined as:
 
-<img src="./static/3a34719b4f391dba26b3e8e4460b7595d62eece4.svg"></img>
+<img src="./static/3a34719b4f391dba26b3e8e4460b7595d62eece4.svg"></img><pr>
 <img src="./static/fc22801ed1232ff1231c4156b589de5c32063a8a.svg"></img>
 
 ## Quick Start
@@ -32,16 +32,12 @@ import (
 )
 
 func main() {
-	img1 := gocv.IMRead(os.Args[1], gocv.IMReadColor)
-	img2 := gocv.IMRead(os.Args[2], gocv.IMReadColor)
-
 	println("compare:", os.Args[1], "&", os.Args[2])
-
-	mse, psnr, err := gopsnr.Exec(img1, img2)
+	mse, psnr, err := gopsnr.ExecWithFileName(os.Args[1], os.Args[2])
 	if err != nil {
 		log.Fatal(err)
 	}
-    println("[MSE] value:", mse, "[PSNR] value:", psnr)
+	println("[MSE] value:", mse, "[PSNR] value:", psnr)
 }
 ```
 

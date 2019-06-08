@@ -9,8 +9,8 @@ import (
 
 const MAX float64 = 255
 
-// Exec MSE/PSNR
-func Exec(firstImg gocv.Mat, secondImg gocv.Mat) (mse float64, psnr float64, err error) {
+// ExecWithMat MSE/PSNR using Mat image.
+func ExecWithMat(firstImg gocv.Mat, secondImg gocv.Mat) (mse float64, psnr float64, err error) {
 	if firstImg.Rows() != secondImg.Rows() || firstImg.Cols() != secondImg.Cols() {
 		return 0, 0, fmt.Errorf(
 			"firstImg [rows: %v, cols: %v] secoundImg [rows: %v, cols: %v]",
@@ -31,4 +31,11 @@ func Exec(firstImg gocv.Mat, secondImg gocv.Mat) (mse float64, psnr float64, err
 	psnr = (20 * math.Log10(MAX)) - (10 * math.Log10(mse))
 
 	return mse, psnr, nil
+}
+
+// ExecWithFileName shorthand of ExecWithMat using FileName.
+func ExecWithFileName(filepath1 string, filepath2 string) (mse float64, psnr float64, err error) {
+	firstImg := gocv.IMRead(filepath1, gocv.IMReadColor)
+	secondImg := gocv.IMRead(filepath2, gocv.IMReadColor)
+	return ExecWithMat(firstImg, secondImg)
 }
