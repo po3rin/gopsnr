@@ -28,7 +28,6 @@ import (
 	"os"
 
 	"github.com/po3rin/gopsnr"
-	"gocv.io/x/gocv"
 )
 
 func main() {
